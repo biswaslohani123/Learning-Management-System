@@ -3,7 +3,7 @@ import { assets } from '../../assets/assets'
 
 const Footer = () => {
   return (
-      <footer className="flex flex-col items-center justify-center w-full py-20 bg-gradient-to-b from-blue-50 to-blue-950 text-white/70">
+      <footer className="flex flex-col items-center justify-center w-full py-20 bg-linear-to-b from-blue-50 to-blue-950 text-white/70">
                 <img src={assets.logo} alt="" />
                 <p className="mt-4 text-center text-black">Copyright © 2025 <a href="https://prebuiltui.com">PrebuiltUI</a>. All rights reservered.</p>
                 <div className="flex items-center gap-4 mt-5">

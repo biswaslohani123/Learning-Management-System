@@ -3,7 +3,7 @@ import { assets, dummyTestimonial } from "../../assets/assets";
 
 const Testomonial = () => {
   return (
-   <div className="flex flex-col items-center justify-center p-6 md:p-14 w-full bg-gradient-to-r from-blue-200 to-blue-500  text-black">
+   <div className="flex flex-col items-center justify-center p-6 md:p-14 w-full bg-gradient-to-r from-blue-white to-blue-100  text-black">
             <a className="mb-8 md:mb-12" href="https://prebuiltui.com">
                 <img className="h-10" src={assets.logo} alt="logo white" />
             </a>

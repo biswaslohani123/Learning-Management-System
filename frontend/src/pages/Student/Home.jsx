@@ -2,6 +2,7 @@ import React from 'react'
 import Hero from '../../components/Students/Hero'
 import CoursesSection from '../../components/Students/CoursesSection'
 import Testomonial from '../../components/Students/Testomonial'
+import CallToAction from '../../components/Students/CallToAction'
 
 
 
@@ -11,6 +12,7 @@ const Home = () => {
       <Hero/>
       <CoursesSection/>
       <Testomonial/>
+      <CallToAction/>
       
     </div>
   )

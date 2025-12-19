@@ -12,6 +12,7 @@ const CourseDetails = () => {
 
   const [courseData, setCourseData] = useState(null);
   const [openSection, setOpenSection] = useState({});
+  const [isAlreadyEnrolled, setIsAlreadyEnrolled] = useState(false)
 
   const {
     allCourses,
@@ -170,7 +171,8 @@ const CourseDetails = () => {
 
         {/* Right Column */}
 
-        <div className="relative border border-white bg-white rounded-2xl w-100 shadow shadow-amber-50 overflow-hidden">
+        <div className="relative border border-white bg-white rounded-2xl w-full max-w-md mx-auto shadow shadow-amber-50 overflow-hidden">
+
           <Snowfall
             snowflakeCount={1000}
             speed={[0.3, 1]}
@@ -226,10 +228,26 @@ const CourseDetails = () => {
               <div className="h-4 w-px bg-gray-500/40"></div>
 
               <div className="flex items-center gap-1">
-                <img src={assets.time_clock_icon} alt="" />
+                <img src={assets.lesson_icon} alt="" />
                 <p>{calculateNoOfLectures(courseData)} Lessons</p>
               </div>
+
             </div>
+
+            <button className="md:mt-6 mt-4 w-full py-3 rounded bg-blue-600 text-white font-medium cursor-pointer hover:scale-105 overflow-hidden duration-300">{isAlreadyEnrolled ? 'Already Enrolled' : 'Enroll Now'}</button>
+            
+            <div  className="pt-6">
+              <p className="md:text-xl text-lg font-medium text-gray-800">What's in the course?</p>
+              <ul className="ml-4 pt-2 text-sm md:text-default list-disc text-blue-950">
+                <li>Lifetime access with free updates.</li>
+                <li>Step-by-step, hands-on project guidance.</li>
+                <li>Downloadable resources and source code.</li>
+                <li>Quizzes to test your knowledge.</li>
+                <li>Certificate of completion.</li>
+              </ul>
+            </div>
+
+
           </div>
         </div>
       </div>

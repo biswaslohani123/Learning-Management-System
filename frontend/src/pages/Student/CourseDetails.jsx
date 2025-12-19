@@ -23,6 +23,7 @@ const CourseDetails = () => {
     calculateCourseDuration,
     calculateChapterTime,
     currency,
+    
   } = useContext(AppContext);
 
   const fetchCourseData = async () => {

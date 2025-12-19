@@ -6,6 +6,7 @@ import { assets } from "../../assets/assets";
 import humanizeDuration from "humanize-duration";
 import Footer from "../../components/Students/Footer";
 import Snowfall from "react-snowfall";
+import YouTube from 'react-youtube'
 
 const CourseDetails = () => {
   const { id } = useParams();
@@ -13,6 +14,7 @@ const CourseDetails = () => {
   const [courseData, setCourseData] = useState(null);
   const [openSection, setOpenSection] = useState({});
   const [isAlreadyEnrolled, setIsAlreadyEnrolled] = useState(false)
+  const [playerData, setPlayerData] = useState(null)
 
   const {
     allCourses,
@@ -30,7 +32,7 @@ const CourseDetails = () => {
 
   useEffect(() => {
     fetchCourseData();
-  }, []);
+  }, [allCourses]);
 
   const toggleSection = (index) => {
     setOpenSection((prev) => ({ ...prev, [index]: !prev[index] }));
@@ -135,7 +137,11 @@ const CourseDetails = () => {
                             <p>{lecture.lectureTitle}</p>
                             <div className="flex gap-2">
                               {lecture.isPreviewFree && (
-                                <p className="text-blue-500 cursor-pointer">
+                                <p onClick={() => setPlayerData({
+
+                                  videoId: lecture.lectureUrl.split("/").pop()
+
+                                })} className="text-blue-500 cursor-pointer">
                                   Preview
                                 </p>
                               )}
@@ -173,6 +179,11 @@ const CourseDetails = () => {
 
         <div className="relative border border-white bg-white rounded-2xl w-full max-w-md mx-auto shadow shadow-amber-50 overflow-hidden">
 
+           {
+
+                playerData ?  <YouTube videoId={playerData.videoId} opts={{playerVars: {autoplay: 1}}} iframeClassName="w-full aspect-video"/>  :   <img src={courseData.courseThumbnail} alt="" />
+              }
+
           <Snowfall
             snowflakeCount={1000}
             speed={[0.3, 1]}
@@ -185,11 +196,14 @@ const CourseDetails = () => {
             }}
           />
 
-          <img src={courseData.courseThumbnail} alt="" />
+         
 
           <div className="pt-5 p-3 relative z-20">
-            <div className="flex gap-3 border w-60 px-2 py-2 rounded-4xl border-red-500">
+            <div className="flex gap-3  w-60 px-2 py-2">
+
+             
               <img className="w-3.5" src={assets.time_left_clock_icon} alt="" />
+             
               <p className="text-red-500">
                 <span className="font-medium">5 days</span> left at this price
               </p>
